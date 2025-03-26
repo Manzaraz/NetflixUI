@@ -41,6 +41,7 @@ struct SplashScreen: View {
                 }
                 
             }
+            .ignoresSafeArea()
         
     }
 }

@@ -18,6 +18,7 @@
 		61CEB0F92D94B55D00E670C2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB0F82D94B55D00E670C2 /* MainView.swift */; };
 		61CEB0FB2D94B5AA00E670C2 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB0FA2D94B5AA00E670C2 /* CustomTabBar.swift */; };
 		61CEB0FD2D94B60200E670C2 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB0FC2D94B60200E670C2 /* Tab.swift */; };
+		61CEB1002D94B95800E670C2 /* NoAnimationButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB0FF2D94B95800E670C2 /* NoAnimationButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		61CEB0F82D94B55D00E670C2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		61CEB0FA2D94B5AA00E670C2 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		61CEB0FC2D94B60200E670C2 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		61CEB0FF2D94B95800E670C2 /* NoAnimationButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAnimationButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		6168F5882D949E32006A3848 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				61CEB0FE2D94B93D00E670C2 /* Helpers */,
 				613B26F52D94A3730085840D /* SplashScreen.swift */,
 				61CEB0F82D94B55D00E670C2 /* MainView.swift */,
 				61CEB0FA2D94B5AA00E670C2 /* CustomTabBar.swift */,
@@ -117,6 +120,14 @@
 				61CEB0F62D94ACE400E670C2 /* AppData.swift */,
 			);
 			path = ViewModelss;
+			sourceTree = "<group>";
+		};
+		61CEB0FE2D94B93D00E670C2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				61CEB0FF2D94B95800E670C2 /* NoAnimationButtonStyle.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				613B26F62D94A3730085840D /* SplashScreen.swift in Sources */,
+				61CEB1002D94B95800E670C2 /* NoAnimationButtonStyle.swift in Sources */,
 				6168F5832D949D50006A3848 /* ContentView.swift in Sources */,
 				6168F5842D949D50006A3848 /* NetflixUIApp.swift in Sources */,
 				61CEB0F92D94B55D00E670C2 /* MainView.swift in Sources */,

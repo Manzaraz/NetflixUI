@@ -13,6 +13,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             /// First View After Splash Screen
+            MainView()
             
             
             if !appData.isSplashFinished {
