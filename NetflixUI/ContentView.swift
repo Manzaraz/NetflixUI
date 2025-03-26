@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    var appData: AppData = .init()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            /// First View After Splash Screen
+            
+            
+            if !appData.isSplashFinished {
+                SplashScreen()
+            }
         }
-        .padding()
+        .environment(appData)
+        .preferredColorScheme(.dark)
     }
 }
 

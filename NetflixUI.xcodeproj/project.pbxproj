@@ -14,6 +14,10 @@
 		6168F5842D949D50006A3848 /* NetflixUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6168F57F2D949D50006A3848 /* NetflixUIApp.swift */; };
 		6168F58C2D94A0BE006A3848 /* Logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 6168F58B2D94A0BE006A3848 /* Logo.json */; };
 		6168F58F2D94A0E9006A3848 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6168F58E2D94A0E9006A3848 /* Lottie */; };
+		61CEB0F72D94ACE400E670C2 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB0F62D94ACE400E670C2 /* AppData.swift */; };
+		61CEB0F92D94B55D00E670C2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB0F82D94B55D00E670C2 /* MainView.swift */; };
+		61CEB0FB2D94B5AA00E670C2 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB0FA2D94B5AA00E670C2 /* CustomTabBar.swift */; };
+		61CEB0FD2D94B60200E670C2 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB0FC2D94B60200E670C2 /* Tab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		6168F57E2D949D50006A3848 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6168F57F2D949D50006A3848 /* NetflixUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixUIApp.swift; sourceTree = "<group>"; };
 		6168F58B2D94A0BE006A3848 /* Logo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Logo.json; sourceTree = "<group>"; };
+		61CEB0F62D94ACE400E670C2 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		61CEB0F82D94B55D00E670C2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		61CEB0FA2D94B5AA00E670C2 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		61CEB0FC2D94B60200E670C2 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +75,7 @@
 			children = (
 				6168F5852D949D5D006A3848 /* Other Files */,
 				6168F58A2D949FC1006A3848 /* Models */,
-				6168F5892D949FB6006A3848 /* ViewModels */,
+				61CEB0F52D94ACAC00E670C2 /* ViewModelss */,
 				6168F5882D949E32006A3848 /* Views */,
 				6168F57E2D949D50006A3848 /* ContentView.swift */,
 				6168F57F2D949D50006A3848 /* NetflixUIApp.swift */,
@@ -89,22 +97,26 @@
 			isa = PBXGroup;
 			children = (
 				613B26F52D94A3730085840D /* SplashScreen.swift */,
+				61CEB0F82D94B55D00E670C2 /* MainView.swift */,
+				61CEB0FA2D94B5AA00E670C2 /* CustomTabBar.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		6168F5892D949FB6006A3848 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		6168F58A2D949FC1006A3848 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				61CEB0FC2D94B60200E670C2 /* Tab.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		61CEB0F52D94ACAC00E670C2 /* ViewModelss */ = {
+			isa = PBXGroup;
+			children = (
+				61CEB0F62D94ACE400E670C2 /* AppData.swift */,
+			);
+			path = ViewModelss;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +200,10 @@
 				613B26F62D94A3730085840D /* SplashScreen.swift in Sources */,
 				6168F5832D949D50006A3848 /* ContentView.swift in Sources */,
 				6168F5842D949D50006A3848 /* NetflixUIApp.swift in Sources */,
+				61CEB0F92D94B55D00E670C2 /* MainView.swift in Sources */,
+				61CEB0FB2D94B5AA00E670C2 /* CustomTabBar.swift in Sources */,
+				61CEB0F72D94ACE400E670C2 /* AppData.swift in Sources */,
+				61CEB0FD2D94B60200E670C2 /* Tab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
