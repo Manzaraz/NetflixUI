@@ -74,7 +74,12 @@ struct ProfileView: View {
                 let sourcePosition = CGPoint(x: sRect.midX, y: sRect.midY)
                 let centerPosition = CGPoint(x: screenRect.width/2, y: (screenRect.height/2)-40)
                 let destinationPosition = CGPoint(x: appData.tabProfileRect.midX, y: appData.tabProfileRect.midY)
+                let animationPath = Path { path in
+                    path.move(to: sourcePosition)
+                    path.addLine(to: destinationPosition)
+                }
                 
+                animationPath.stroke(lineWidth: 2)
                                 
                 /// Selected Profile Image View with Loading Indicator
                 ZStack {
@@ -83,7 +88,7 @@ struct ProfileView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: animateToMainView ? 25 : sRect.width, height: animateToMainView ? 25 : sRect.height)
                         .clipShape(.rect(cornerRadius: 10))
-                        .position(animateToCenter ? centerPosition : animateToMainView ? destinationPosition : sourcePosition)
+                        .position(animateToCenter ? (animateToMainView ? destinationPosition : centerPosition) : sourcePosition)
                     
                     /// Custom Netflix Style Indicator
                     NetflixLoader()
@@ -113,9 +118,7 @@ struct ProfileView: View {
         
         withAnimation(.snappy(duration: 0.6, extraBounce: 0.1), completionCriteria: .removed) {
             animateToMainView = true
-        } completion: {
-            
-        }
+        } completion: { }
 
     }
     
