@@ -82,6 +82,14 @@ struct ProfileView: View {
                 }
                 
                 animationPath.stroke(lineWidth: 2)
+                
+                let endPosition = animationPath.trimmedPath(from: 0, to: 1).currentPoint ?? destinationPosition
+                let currentPosition = animationPath.trimmedPath(from: 0, to: 0.97).currentPoint ?? destinationPosition
+                
+                let diff = CGSize(
+                    width: endPosition.x - currentPosition.x,
+                    height: endPosition.y - currentPosition.y
+                )
                                 
                 /// Selected Profile Image View with Loading Indicator
                 ZStack {
@@ -101,6 +109,7 @@ struct ProfileView: View {
                                 progress: progress
                             )
                         )
+                        .offset(animateToMainView ? diff : .zero)
                     
                     /// Custom Netflix Style Indicator
                     NetflixLoader()
@@ -130,7 +139,7 @@ struct ProfileView: View {
         
         withAnimation(.snappy(duration: 0.6, extraBounce: 0.1), completionCriteria: .removed) {
             animateToMainView = true
-            progress = 1
+            progress = 0.97
         } completion: { }
 
     }
