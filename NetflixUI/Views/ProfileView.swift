@@ -74,9 +74,10 @@ struct ProfileView: View {
                 let sourcePosition = CGPoint(x: sRect.midX, y: sRect.midY)
                 let centerPosition = CGPoint(x: screenRect.width/2, y: (screenRect.height/2)-40)
                 let destinationPosition = CGPoint(x: appData.tabProfileRect.midX, y: appData.tabProfileRect.midY)
+                
                 let animationPath = Path { path in
-                    path.move(to: sourcePosition)
-                    path.addLine(to: destinationPosition)
+                    path.move(to: centerPosition)
+                    path.addQuadCurve(to: destinationPosition, control: CGPoint(x: centerPosition.x * 2, y: centerPosition.y - (centerPosition.y/0.8)))
                 }
                 
                 animationPath.stroke(lineWidth: 2)
