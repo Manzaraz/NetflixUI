@@ -13,6 +13,7 @@ struct ProfileView: View {
     /// View Properties
     @State private var animateToCenter: Bool = false
     @State private var animateToMainView: Bool = false
+    @State private var progress: CGFloat = 0
     
     var body: some View {
         VStack {
@@ -89,7 +90,17 @@ struct ProfileView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: animateToMainView ? 25 : sRect.width, height: animateToMainView ? 25 : sRect.height)
                         .clipShape(.rect(cornerRadius: 10))
-                        .position(animateToCenter ? (animateToMainView ? destinationPosition : centerPosition) : sourcePosition)
+                        .modifier(
+                            AnimatedPositionModifier(
+                                source: sourcePosition,
+                                center: centerPosition,
+                                destination: destinationPosition,
+                                animateToCenter: animateToCenter,
+                                animateToMainView: animateToMainView,
+                                path: animationPath,
+                                progress: progress
+                            )
+                        )
                     
                     /// Custom Netflix Style Indicator
                     NetflixLoader()
@@ -119,6 +130,7 @@ struct ProfileView: View {
         
         withAnimation(.snappy(duration: 0.6, extraBounce: 0.1), completionCriteria: .removed) {
             animateToMainView = true
+            progress = 1
         } completion: { }
 
     }
@@ -131,7 +143,7 @@ struct ProfileView: View {
     }
     
     
-    /// Profile Card View
+    /// Profile View Card
     @ViewBuilder func ProfileCardview(_ profile: Profile) -> some View {
         VStack(spacing: 8) {
             let status = profile.id == appData.watchingPrfile?.id
@@ -160,6 +172,30 @@ struct ProfileView: View {
         }
     }
 }
+
+
+struct AnimatedPositionModifier: ViewModifier, Animatable {
+    var source: CGPoint
+    var center: CGPoint
+    var destination: CGPoint
+    var animateToCenter: Bool
+    var animateToMainView: Bool
+    var path: Path
+    var progress: CGFloat
+    
+    var animatableData: CGFloat {
+        get { progress }
+        set { progress = newValue }
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .position(
+                animateToCenter ? animateToMainView ? (path.trimmedPath(from: 0, to: progress).currentPoint ?? center) : center : source
+            )
+    }
+}
+
 
 #Preview {
     ContentView()
