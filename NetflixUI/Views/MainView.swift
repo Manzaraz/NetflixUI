@@ -15,6 +15,7 @@ struct MainView: View {
             /// Custom Tab Bar
             CustomTabBar()
         }
+        .coordinateSpace(.named("MAINVIEW"))
     }
 }
 

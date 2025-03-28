@@ -19,12 +19,22 @@ struct CustomTabBar: View {
                     VStack(spacing: 2) {
                         Group {
                             if tab.icon == "Profile" {
-                                Image(.iJustine)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 25, height: 25)
-                                    .clipShape(.rect(cornerRadius: 4))
-                                    .frame(width: 35, height: 35)
+                                GeometryReader { proxy in
+                                    let rect = proxy.frame(in: .named("MAINVIEW"))
+                                    
+                                    Image(.iJustine)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 25, height: 25)
+                                        .clipShape(.rect(cornerRadius: 4))
+                                 
+                                    Color.clear
+                                        .preference(key: RectKey.self, value: rect)
+                                        .onPreferenceChange(RectKey.self) {
+                                            appData.tabProfileRect = $0
+                                        }
+                                }
+                                .frame(width: 35, height: 35)
                             } else {
                                 Image(systemName: tab.icon)
                                     .font(.title3)

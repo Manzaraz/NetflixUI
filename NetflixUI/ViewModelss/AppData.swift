@@ -14,6 +14,7 @@ class AppData {
     
     /// Profile Selection Properties
     var showProfileView: Bool = false
+    var tabProfileRect: CGRect = .zero
     var watchingPrfile: Profile?
     var animateProfile: Bool = false
 }

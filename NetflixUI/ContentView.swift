@@ -15,6 +15,19 @@ struct ContentView: View {
             /// First View After Splash Screen
             MainView()
             
+            if appData.showProfileView {
+                Rectangle()
+                    .fill(.black)
+                    .ignoresSafeArea()
+                    .transition(.identity)
+            }
+            
+            ZStack {
+                if appData.showProfileView {
+                    ProfileView()
+                }
+            }
+            .animation(.snappy, value: appData.showProfileView)
             
             if !appData.isSplashFinished {
                 SplashScreen()

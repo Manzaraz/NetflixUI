@@ -49,7 +49,7 @@ struct ProfileView: View {
                 .frame(maxHeight: .infinity)
         }
         .padding(15)
-        .opacity(appData.watchingPrfile == nil ? 1 : 0)
+        .opacity(animateToCenter ? 0 : 1)
         .overlayPreferenceValue(RectAnchorKey.self) { value in
             AnimationLayerView(value)
         }
@@ -69,6 +69,8 @@ struct ProfileView: View {
                 /// Positions
                 let sourcePosition = CGPoint(x: sRect.midX, y: sRect.midY)
                 let centerPosition = CGPoint(x: screenRect.width/2, y: (screenRect.height/2)-40)
+                let destinationPosition = CGPoint(x: appData.tabProfileRect.midX, y: appData.tabProfileRect.midY)
+                
                                 
                 /// Selected Profile Image View with Loading Indicator
                 ZStack {
@@ -77,7 +79,7 @@ struct ProfileView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: sRect.width, height: sRect.height)
                         .clipShape(.rect(cornerRadius: 10))
-                        .position(animateToCenter ? centerPosition : sourcePosition)
+                        .position(destinationPosition)
                     
                     /// Custom Netflix Style Indicator
                     NetflixLoader()
@@ -117,13 +119,17 @@ struct ProfileView: View {
     /// Profile Card View
     @ViewBuilder func ProfileCardview(_ profile: Profile) -> some View {
         VStack(spacing: 8) {
+            let status = profile.id == appData.watchingPrfile?.id
+            
             GeometryReader { _ in
                 Image(profile.icon)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
                     .clipShape(.rect(cornerRadius: 10))
+                    .opacity(animateToCenter ? 0 : 1)
             }
+            .animation(status ? .none : .bouncy(duration: 0.35), value: animateToCenter)
             .frame(width: 100, height: 100)
             .anchorPreference(key: RectAnchorKey.self, value: .bounds) { anchor in
                 return [profile.sourceAnchorID: anchor]
@@ -141,7 +147,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
-        .environment(AppData())
-        .preferredColorScheme(.dark)
+    ContentView()
 }
