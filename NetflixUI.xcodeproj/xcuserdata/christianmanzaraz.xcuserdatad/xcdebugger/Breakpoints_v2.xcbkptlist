@@ -14,10 +14,54 @@
             filePath = "NetflixUI/Views/ProfileView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "AnimationLayerView(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C7171A9A-6B16-40B0-A66A-1868C0616E61 - 46bf9609b3d0135c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftUI.GeometryProxy) -&gt; Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.task(priority: Swift.TaskPriority, _: @Sendable () async -&gt; ()) -&gt; some&gt;&gt;.0&gt; in NetflixUI.ProfileView.AnimationLayerView(Swift.Dictionary&lt;Swift.String, SwiftUI.Anchor&lt;__C.CGRect&gt;&gt;) -&gt; some"
+                  moduleName = "NetflixUI.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/christianmanzaraz/SwiftUI/NetflixUI/NetflixUI/Views/ProfileView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92">
+               </Location>
+               <Location
+                  uuid = "C7171A9A-6B16-40B0-A66A-1868C0616E61 - a218b0c2c2560ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Sendable () async -&gt; () in closure #1 (SwiftUI.GeometryProxy) -&gt; Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.task(priority: Swift.TaskPriority, _: @Sendable () async -&gt; ()) -&gt; some&gt;&gt;.0&gt; in NetflixUI.ProfileView.AnimationLayerView(Swift.Dictionary&lt;Swift.String, SwiftUI.Anchor&lt;__C.CGRect&gt;&gt;) -&gt; some"
+                  moduleName = "NetflixUI.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/christianmanzaraz/SwiftUI/NetflixUI/NetflixUI/Views/ProfileView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92">
+               </Location>
+               <Location
+                  uuid = "C7171A9A-6B16-40B0-A66A-1868C0616E61 - 66837a2dea43e1b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #2 @Sendable () async -&gt; () in closure #1 (SwiftUI.GeometryProxy) -&gt; Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.task(priority: Swift.TaskPriority, _: @Sendable () async -&gt; ()) -&gt; some&gt;&gt;.0&gt; in NetflixUI.ProfileView.AnimationLayerView(Swift.Dictionary&lt;Swift.String, SwiftUI.Anchor&lt;__C.CGRect&gt;&gt;) -&gt; some"
+                  moduleName = "NetflixUI.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/christianmanzaraz/SwiftUI/NetflixUI/NetflixUI/Views/ProfileView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

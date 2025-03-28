@@ -12,6 +12,7 @@ struct ProfileView: View {
     
     /// View Properties
     @State private var animateToCenter: Bool = false
+    @State private var animateToMainView: Bool = false
     
     var body: some View {
         VStack {
@@ -49,7 +50,10 @@ struct ProfileView: View {
                 .frame(maxHeight: .infinity)
         }
         .padding(15)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .opacity(animateToCenter ? 0 : 1)
+        .background(.black)
+        .opacity(animateToMainView ? 0 : 1)
         .overlayPreferenceValue(RectAnchorKey.self) { value in
             AnimationLayerView(value)
         }
@@ -77,9 +81,9 @@ struct ProfileView: View {
                     Image(profile.icon)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: sRect.width, height: sRect.height)
+                        .frame(width: animateToMainView ? 25 : sRect.width, height: animateToMainView ? 25 : sRect.height)
                         .clipShape(.rect(cornerRadius: 10))
-                        .position(destinationPosition)
+                        .position(animateToCenter ? centerPosition : animateToMainView ? destinationPosition : sourcePosition)
                     
                     /// Custom Netflix Style Indicator
                     NetflixLoader()
@@ -106,6 +110,13 @@ struct ProfileView: View {
         }
         
         await loadContents()
+        
+        withAnimation(.snappy(duration: 0.6, extraBounce: 0.1), completionCriteria: .removed) {
+            animateToMainView = true
+        } completion: {
+            
+        }
+
     }
     
     
