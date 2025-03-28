@@ -60,11 +60,10 @@ struct ProfileView: View {
         }
     }
     
-    
     /// Profile Animation View
     @ViewBuilder func AnimationLayerView(_ value: [String: Anchor<CGRect>]) -> some View {
         GeometryReader { proxy in
-            if let profile = appData.watchingPrfile,
+            if let profile = appData.watchingProfile,
                let sourceAnchor = value[profile.sourceAnchorID],
                appData.animateProfile {
                 
@@ -81,8 +80,6 @@ struct ProfileView: View {
                     path.addQuadCurve(to: destinationPosition, control: CGPoint(x: centerPosition.x * 2, y: centerPosition.y - (centerPosition.y/0.8)))
                 }
                 
-                animationPath.stroke(lineWidth: 2)
-                
                 let endPosition = animationPath.trimmedPath(from: 0, to: 1).currentPoint ?? destinationPosition
                 let currentPosition = animationPath.trimmedPath(from: 0, to: 0.97).currentPoint ?? destinationPosition
                 
@@ -97,7 +94,9 @@ struct ProfileView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: animateToMainView ? 25 : sRect.width, height: animateToMainView ? 25 : sRect.height)
-                        .clipShape(.rect(cornerRadius: 10))
+                        .clipShape(.rect(cornerRadius: 4))
+                        .animation(.snappy(duration: 0.3, extraBounce: 0), value: animateToMainView)
+                        .opacity(animateToMainView && appData.activeTab != .account ? 0.6 : 1)
                         .modifier(
                             AnimatedPositionModifier(
                                 source: sourcePosition,
@@ -116,6 +115,7 @@ struct ProfileView: View {
                         .frame(width: 60, height: 60)
                         .offset(y: 80)
                         .opacity(animateToCenter ? 1 : 0)
+                        .opacity(animateToMainView ? 0 : 1)
                     
                 }
                 .transition(.identity)
@@ -139,9 +139,12 @@ struct ProfileView: View {
         
         withAnimation(.snappy(duration: 0.6, extraBounce: 0.1), completionCriteria: .removed) {
             animateToMainView = true
+            appData.hideMainView = false
             progress = 0.97
-        } completion: { }
-
+        } completion: {
+            appData.showProfileView = false
+            appData.animateProfile = false
+        }
     }
     
     
@@ -155,14 +158,14 @@ struct ProfileView: View {
     /// Profile View Card
     @ViewBuilder func ProfileCardview(_ profile: Profile) -> some View {
         VStack(spacing: 8) {
-            let status = profile.id == appData.watchingPrfile?.id
+            let status = profile.id == appData.watchingProfile?.id
             
             GeometryReader { _ in
                 Image(profile.icon)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
-                    .clipShape(.rect(cornerRadius: 10))
+                    .clipShape(.rect(cornerRadius: 4))
                     .opacity(animateToCenter ? 0 : 1)
             }
             .animation(status ? .none : .bouncy(duration: 0.35), value: animateToCenter)
@@ -171,7 +174,7 @@ struct ProfileView: View {
                 return [profile.sourceAnchorID: anchor]
             }
             .onTapGesture {
-                appData.watchingPrfile = profile
+                appData.watchingProfile = profile
                 appData.animateProfile = true
             }
 

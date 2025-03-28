@@ -33,6 +33,7 @@ struct SplashScreen: View {
                     .animationDidFinish{ completed in
                         appData.isSplashFinished = progress != 0 && completed
                         appData.showProfileView = appData.isSplashFinished
+                        appData.hideMainView = appData.showProfileView
                     }
                     .frame(width: 600, height: 400) // The size 600x400 works for all screen sizes (larger to smaller phones)
                     .task {

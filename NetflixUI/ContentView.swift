@@ -15,11 +15,10 @@ struct ContentView: View {
             /// First View After Splash Screen
             MainView()
             
-            if appData.showProfileView {
+            if appData.hideMainView {
                 Rectangle()
                     .fill(.black)
                     .ignoresSafeArea()
-                    .transition(.identity)
             }
             
             ZStack {
