@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @Environment(AppData.self) private var appData
+    
     /// View Properties
     @State private var animateToCenter: Bool = false
     
@@ -63,11 +64,12 @@ struct ProfileView: View {
                appData.animateProfile {
                 
                 let sRect = proxy[sourceAnchor]
+                let screenRect = proxy.frame(in: .global)
                 
                 /// Positions
                 let sourcePosition = CGPoint(x: sRect.midX, y: sRect.midY)
-                
-                
+                let centerPosition = CGPoint(x: screenRect.width/2, y: (screenRect.height/2)-40)
+                                
                 /// Selected Profile Image View with Loading Indicator
                 ZStack {
                     Image(profile.icon)
@@ -75,10 +77,40 @@ struct ProfileView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: sRect.width, height: sRect.height)
                         .clipShape(.rect(cornerRadius: 10))
-                        .position(sourcePosition)
+                        .position(animateToCenter ? centerPosition : sourcePosition)
+                    
+                    /// Custom Netflix Style Indicator
+                    NetflixLoader()
+                        .frame(width: 60, height: 60)
+                        .offset(y: 80)
+                        .opacity(animateToCenter ? 1 : 0)
+                    
+                }
+                .transition(.identity)
+                .task {
+                    guard !animateToCenter else { return }
+                    
+                    await animateUser()
                 }
             }
         }
+    }
+    
+    
+    /// Animate User
+    func animateUser() async {
+        withAnimation(.bouncy(duration: 0.35)) {
+            animateToCenter = true
+        }
+        
+        await loadContents()
+    }
+    
+    
+    /// Load Contents
+    func loadContents() async {
+        /// Load Any Network Content Here
+        try? await Task.sleep(for: .seconds(1))
     }
     
     
